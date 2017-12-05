@@ -1,0 +1,88 @@
+.track-form,
+.user-form {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary);
+    padding-right: 5px;
+    overflow: hidden;
+    transform: none;
+    transition: opacity .1s ease-out, transform .2s ease-out, background-color 1s ease-out;
+
+    &_inline {
+        opacity: 1;
+        position: relative;
+        pointer-events: all;
+        overflow:  hidden;
+        z-index: 0;
+        background: transparent;
+    }
+
+    &_visible {
+        transform: none;
+        opacity: 1;
+        pointer-events: all;
+        z-index: 2;
+        overflow-y: auto;
+    }
+
+    &__fields {
+        input,
+        textarea {
+            width: 100%;
+            margin-top: 5px;
+        }
+    }
+
+    &__preview {
+        height: 246px;
+    }
+
+    &__video {
+        margin: 10px auto;
+        max-width: 438px;
+    }
+
+    &__timing {
+        position: relative;
+        height: 35px;
+        width: 100%;
+        margin-bottom: 10px;
+        
+        input {
+            position: absolute;
+            top: 5px;
+            width: 100px;
+            text-align: center;
+
+            &:first-child {
+                border-left-color: red;
+            }
+
+            &:last-child {
+                border-right-color: red;
+            }
+        }
+    }
+
+    &__colors {
+        padding: 15px 0px;
+        display: flex;
+        justify-content: space-between;
+
+        > div {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .track-form__colors {
+        flex-direction: column;
+    }
+}

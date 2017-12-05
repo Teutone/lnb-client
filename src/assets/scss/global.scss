@@ -1,9 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,300|Abril+Fatface&subset=latin,latin-ext');
+@import './animations';
+@import './iconicstroke';
+
+/* Resets */
 * {
     box-sizing: border-box;
 }
 
+html {
+    font-size: 100%;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    font-size: 16px;
+    min-height: 100vh;
+    font-size: 1rem;
 }
+
+@mixin colorVar($name, $value) {
+    --#{$name}: $value;
+    @for $i from 1 through 9 {
+        --#{$name}-#{$i}: rgba($value, $i/10);
+    }
+}
+
+/* Variables */
+:root {
+    @include colorVar(primary, #282c34);
+    @include colorVar(secondary, white);
+    @include colorVar(accent, black);
+
+    --color-transition: background-color 1s ease-out, color 1s ease-out;
+}
+
+/* General styles */
+body {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-color: var(--secondary);
+
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+
+    &.transitions-active {
+        transition: var(--color-transition);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+.center {
+    text-align: center;
+}
+
+.user-name {
+  font-weight: 200;
+}
+
+.flexxer {
+    flex-grow: 1;
+}
+
+.lnb-ap {
+    height: 100%;
+}
+
+.logo {
+    font-family: "Abril Fatface", sans-serif;
+    font-weight: 400;
+    font-size: 3em;
+    margin-top: 45px;
+    margin-bottom: 5px;
+
+    transition: font-size .2s ease-out, margin 0.2s ease-out;
+
+    &_small {
+        font-size: 1.5rem;
+        margin: -55px 0px 0px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 1.5em;
+    }
+}
+
+.colored-episode {
+    display: inline-block;
+    text-align: center;
+    min-width: 40px;
+    padding: 4px 8px;
+    margin: 0px 10px 0px -4px;
+}
+
+@import './components/input-elements';
+@import './components/nav';
+@import './components/lists';
+@import './components/track';
+@import './components/forms';
+@import './components/user';
+@import './components/forms';
+@import './components/volume-bar';
+@import './components/player';
+@import './components/yt-wrap';
+@import './components/app';
+@import './components/fb-connect';
+@import './components/config';
+@import './components/login';
