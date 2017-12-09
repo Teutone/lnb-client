@@ -109,7 +109,7 @@ export default {
           <button @click.prevent="preview = true" v-if="!preview">Preview</button>
           <button @click.prevent="preview = false" v-if="preview">Close Preview</button>
           <button @click.prevent="view = 'publish'" v-if="!published">Publish</button>
-          <button @click.prevent="editing = true">Edit</button>
+          <button @click.prevent="view = 'editing'">Edit</button>
           <button @click.prevent="deleting = true" v-if="!published">Delete</button>
         </div>
         <div class="track__actions" v-else>
