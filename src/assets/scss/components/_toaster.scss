@@ -41,11 +41,6 @@ $toaster-padding: 15px;
         }
     }
 
-    &__type-icon {
-        font-size: 25px;
-        margin-right: 10px;
-    }
-
     &__close {
         width: 30px;
         height: 30px;
@@ -58,6 +53,7 @@ $toaster-padding: 15px;
         color: var(--secondary-8);
         font-size: 29px;
         position: relative;
+        margin-right: 10px;
 
         &:hover {
             color: var(--secondary);
@@ -81,7 +77,7 @@ $toaster-padding: 15px;
 
         svg {
             position: absolute;
-            margin-top: -1px;
+            margin-top: -3px;
 
             .outer {
                 fill: transparent;
