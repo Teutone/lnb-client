@@ -59,6 +59,12 @@ export default {
       }
 
       deleteTrack(this.track.id)
+        .then((track) => {
+          Broadcaster.emit('toaster', {
+            type: 'success',
+            title: `Deleted ${track.title} by ${track.artist}`,
+          });
+        })
         .catch((err) => {
           Broadcaster.emit('toaster', {
             type: 'error',
