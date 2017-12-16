@@ -29,7 +29,8 @@ body {
     @include colorVar(primary, #282c34);
     @include colorVar(secondary, white);
     @include colorVar(accent, black);
-
+    --error: #c52424;
+    --success: #249b17;
     --color-transition: background-color 1s ease-out, color 1s ease-out;
 }
 
@@ -114,6 +115,7 @@ p a {
 @import './components/player';
 @import './components/yt-wrap';
 @import './components/app';
+@import './components/toaster';
 @import './components/fb-connect';
 @import './components/config';
 @import './components/login';

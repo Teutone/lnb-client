@@ -47,7 +47,6 @@ export default {
       this.unsetTimer();
       this.$emit('playing', ev);
       state.theme.next(JSON.parse(this.track.meta));
-
       if (this.track.end === 0) {
         this.track.end = Math.floor(this.player.getDuration());
 
