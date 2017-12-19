@@ -37,7 +37,7 @@ button {
     text-transform: uppercase;
     background: transparent;
     color: var(--secondary-4);
-    cursor: pointer;
+    cursor: url('../img/cursor/pointer.png');
     padding: 0px;
 
     &:hover {
@@ -60,6 +60,7 @@ button + button:not(.icon-button) {
     justify-content: center;
     align-items: center;
     color: var(--light);
+    cursor: url('../img/cursor/pointer.png');
 
     span {
         display: block;

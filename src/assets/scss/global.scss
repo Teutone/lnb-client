@@ -40,6 +40,7 @@ body {
     background-color: var(--primary);
     color: var(--secondary);
     border-color: var(--secondary);
+    cursor: url('../img/cursor/default.png');
 
     display: flex;
     margin: 5px;
@@ -55,6 +56,7 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+    cursor: url('../img/cursor/pointer.png');
 }
 
 p a {
