@@ -64,3 +64,23 @@
         font-size: 1em;
     }
 }
+
+
+@media screen and (max-width: 600px) {
+    .track {
+
+        &__main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__footer {
+            flex-direction: column;
+            height: auto;
+        }
+
+        &__actions {
+            width: 100%;
+        }
+    }
+}
