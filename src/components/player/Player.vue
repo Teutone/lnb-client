@@ -2,16 +2,16 @@
 import marked from 'marked';
 import { state } from '../../app';
 import Broadcaster from '../../broadcast';
-import { shuffle, secondsToString, toggleFullScreen } from '../../utility';
-import VolumeBar from './VolumeBar';
+import { shuffle, toggleFullScreen } from '../../utility';
 import TrackList from './TrackList';
 import YtWrap from './YtWrap';
+import PlayerControls from './PlayerControls';
 
 export default {
   components: {
-    VolumeBar,
     YtWrap,
     TrackList,
+    PlayerControls,
   },
   data: () => ({
     status: 'loading',
@@ -182,12 +182,6 @@ export default {
     track() {
       return this.playlist[this.index];
     },
-    timeString() {
-      return secondsToString(this.currentTime);
-    },
-    totalTimeString() {
-      return secondsToString(this.duration);
-    },
     currentTrack() {
       return this.playlist[this.index];
     },
@@ -209,20 +203,21 @@ export default {
     <div v-if="status === 'loading'">
       Loading...
     </div>
-    <div v-if="track">
-      <!-- Episode -->
-      <div class="player__episode">
-        episode {{ track.episode }}
-      </div>
+    <div v-if="track" class="player__wrapper">
 
       <!-- Track information -->
-      <div class="player__track-details" v-if="view === 'player'">
-        <h2>
+      <div class="player__track-details" :class="{ 'player__track-details_small': view !== 'player' }">
+        <!-- Episode -->
+        <div class="player__episode">
+          episode {{ track.episode }}
+        </div>
+        <div class="player__title">
           <a title="View on Youtube" target="_blank" :href="track.url">
             {{ track.title }}
           </a>
-        </h2>
-        <div>{{ track.artist }} - {{ track.release }}</div>
+        </div>
+        <div class="player__artist">{{ track.artist }}</div>
+        <div class="player__release"> - {{ track.release }}</div>
       </div>
 
       <track-list :playlist="playlist" :track="track" @go-to="goTo" :open="view === 'playlist'"></track-list>
@@ -248,41 +243,19 @@ export default {
       </div>
 
       <!-- Buttons and controls -->
-      <div class="controls" :class="{ controls_low: view !== 'player' }" v-if="player !== null">
-        <button
-          title="Previous [Left Arrow]"
-          @click.prevent="previous"
-          class="icon-button"
-        >
-          <span class="iconicstroke-first"></span>
-        </button>
-        <button
-          title="Play / Pause [Spacebar]"
-          @click.prevent="togglePlayPause"
-          class="icon-button"
-        >
-          <span v-if="status === 'paused'" class="iconicstroke-play"></span>
-          <span v-if="status === 'playing'" class="iconicstroke-pause"></span>
-          <span v-if="status === 'buffering'" class="iconicstroke-spin-alt ani-spin"></span>
-        </button>
-        <button
-          title="Next [Right Arrow]"
-          @click.prevent="next"
-          class="icon-button"
-        >
-          <span class="iconicstroke-last"></span>
-        </button>
-
-        <volume-bar
+      <div class="player__controls" :class="{ player__controls_low: view !== 'player' }" v-if="player !== null">
+        <player-controls
+          :status="status"
           :muted="muted"
           :volume="volume"
+          :duration="duration"
+          :current-time="currentTime"
+          @next="next"
+          @previous="previous"
+          @toggle-play-pause="togglePlayPause"
           @mute="muted = $event"
           @volume="volume = $event"
-        ></volume-bar>
-
-        <span class="controls__time">
-          {{ timeString }} / {{ totalTimeString }}
-        </span>
+        ></player-controls>
 
         <span class="flexxer"></span>
 

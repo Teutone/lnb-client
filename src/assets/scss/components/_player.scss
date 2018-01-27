@@ -4,38 +4,102 @@
     flex-direction: column;
     justify-content: center;
 
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__track-details {
         margin: 30px 0px;
 
         h2 {
             margin: 0px;
         }
+
+        &_small {
+            display: flex;
+            flex-shrink: 0;
+            margin: 0px;
+            margin-top: 4px;
+
+            .player__title {
+                font-size: 1rem;
+                margin: 0px 5px 0px 10px;
+
+                &::after {
+                    content: '-';
+                }
+            }
+
+            .player__release {
+                display: none;
+            }
+        }
+    }
+
+    &__artist,
+    &__release {
+        display: inline-block;
+        width: auto;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 15px 0px;
     }
 
     &__yt-wrap:not(.yt-wrap_hidden) {
         margin: 20px 0px;
     }
-}
 
-@media screen and (max-width: 600px) {
-    .player {
-        &__track-details {
-            h2 {
-                font-size: 1.2em;
-            }
+
+    &__controls {
+        display: flex;
+        flex-wrap: nowrap;
+
+        &_low {
+            margin-bottom: -70px;
         }
     }
 }
 
-.controls {
-    display: flex;
-    flex-wrap: nowrap;
+@media screen and (max-width: 600px) {
+    .player {
+        height: 100%;
+        padding: 0px;
 
-    &__time {
-        margin-left: 10px;
-    }
+        &__wrapper {
+            flex-grow: 1;
+        }
 
-    &_low {
-        margin-bottom: -70px;
+        &__yt-wrap,
+        &__about
+        &__controls {
+            flex-shrink: 0;
+        }
+
+        .logo,
+        &__controls {
+            padding: 0px 15px;
+        }
+
+        &__controls {
+            flex-shrink: 0;
+
+            &_low {
+                margin-bottom: 0px;
+                height: 45px;
+            }
+        }
+
+        &__track-details {
+            padding: 5px 15px;
+            margin: 0px;
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
     }
 }

@@ -1,0 +1,8 @@
+.player-controls {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &__time {
+        margin-left: 10px;
+    }
+}
