@@ -54,7 +54,7 @@
         display: flex;
         flex-wrap: nowrap;
         font-weight: 200;
-        cursor: pointer;
+        cursor: url('../img/static/cursor/pointer.png'), pointer;
         letter-spacing: 0.3px;
 
         &_active {

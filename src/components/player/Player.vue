@@ -123,6 +123,7 @@ export default {
       set(val) {
         this.player_ = val;
         this.volume = 100;
+        this.status = 'playing';
       },
     },
     muted: {
@@ -181,7 +182,6 @@ export default {
     track() {
       return this.playlist[this.index];
     },
-
     timeString() {
       return secondsToString(this.currentTime);
     },

@@ -9,7 +9,7 @@ This is the Vue.js based client-side application for [latenight.blue](https://la
 
 ## Production setup
 
-Place the contents of `dist/` into the server `themeDir` directory, inside a directory that is the theme name. For example, assuming `themeDir` is set to `/lnb-server/static/`:
+After building, place the contents of `dist/` into the server `themeDir` directory, inside a directory that is the theme name. For example, assuming `themeDir` is set to `/lnb-server/static/`:
 
     /lnb-server
         /static
